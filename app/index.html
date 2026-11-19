@@ -1,25 +1,84 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Legend — GTA VI Trophy Guide &amp; Tracker</title>
+<meta name="description" content="Offline guide and tracker for all 55 Grand Theft Auto VI trophies: official names, descriptions and grades, a roadmap to the Platinum, missables flagged, and a sourced guide for every trophy.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="top">
+  <div class="brand">
+    <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5</p>
+    <h1>Leonida Legend</h1>
+    <p class="sub">Every one of the 55 official trophies — tracked, guided, and sourced. Works fully offline.</p>
+  </div>
+  <div class="progressbox" aria-label="Overall progress">
+    <p class="big"><span id="earnedCount">0</span><span class="dim"> / 55 earned</span></p>
+    <div class="bar" role="progressbar" aria-label="Trophies earned" aria-valuemin="0" aria-valuemax="55" aria-valuenow="0" id="progressBar"><span id="progressFill"></span></div>
+    <p class="small"><span id="scoreLine">0 / 1,000 Gamerscore</span> &middot; <span id="gradeLine"></span></p>
+    <button id="themeToggle" type="button" title="Switch theme">☀️ Leonida Day</button>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
+
+<nav class="tabs" aria-label="Sections">
+  <button type="button" data-view="checklist" class="active">Checklist</button>
+  <button type="button" data-view="roadmap">Roadmap to Platinum</button>
+  <button type="button" data-view="missables">Missables</button>
+  <button type="button" data-view="nextup">Next Up</button>
+  <button type="button" data-view="about">About &amp; Sources</button>
+</nav>
+
+<section class="controls" aria-label="Filters and settings">
+  <label class="search">Search <input id="search" type="search" placeholder="Trophy name or description…  ( / )" autocomplete="off"></label>
+  <label>Kind
+    <select id="kind">
+      <option value="all">All kinds</option>
+      <option value="story">Story</option>
+      <option value="missable">Missable</option>
+      <option value="side">Side strands</option>
+      <option value="collectibles">Collectibles</option>
+      <option value="activities">Activities</option>
+      <option value="robbery">Robbery</option>
+      <option value="exploration">Exploration</option>
+      <option value="money">Money</option>
+      <option value="combat">Combat</option>
+      <option value="partner">Partner</option>
+      <option value="secret">Secret</option>
+      <option value="online">Online</option>
+    </select>
+  </label>
+  <label>Grade
+    <select id="grade">
+      <option value="all">All grades</option>
+      <option value="platinum">Platinum</option>
+      <option value="gold">Gold</option>
+      <option value="silver">Silver</option>
+      <option value="bronze">Bronze</option>
+    </select>
+  </label>
+  <label class="check"><input id="earnedOnly" type="checkbox"> Earned only</label>
+  <label class="check"><input id="hideEarned" type="checkbox"> Hide earned</label>
+  <label class="check spoiler"><input id="spoilers" type="checkbox" checked> Hide story spoilers until earned</label>
+  <span class="spacer"></span>
   <button id="export" type="button">Export progress</button>
   <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+  <button id="reset" type="button" title="Clear all earned ticks, counters and notes">Reset</button>
+</section>
+
+<main id="view"></main>
+
+<aside id="guidePanel" class="panel" hidden aria-label="Trophy guide">
+  <button id="panelClose" type="button" aria-label="Close guide">✕</button>
+  <div id="panelBody"></div>
+</aside>
+
+<footer>
+  <p>Names, descriptions and grades are the official list (55 trophies: 1 Platinum, 2 Gold, 6 Silver, 46 Bronze; 28 hidden). Every guide is written in this guide's own words and cites its sources beside it. No Rockstar artwork or logos are used. Rarity data is not published yet — PSNProfiles and TrueTrophies had no GTA VI page at launch — so no rarity figures are shown.</p>
+  <p>All 55 trophies are single-player; there are no online trophies. Your ticks, counters and notes never leave this browser except when you export them.</p>
+</footer>
+
 <script type="module" src="app.js"></script>
 </body>
 </html>
